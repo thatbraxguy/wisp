@@ -19,3 +19,16 @@ location.init(config.gmaps)
 
 // switch callback to instead create a node on the map!
 wisps.addListener('child_added', data => console.log(data));
+
+const recorder = new webkitSpeechRecognition();
+recorder.lang = 'en';
+recorder.onresult = e => {
+  if (e.results.length > 0) {
+    const result = event.results[event.results.length-1];
+    if (result.isFinal) {
+      console.log(result[0].transcript);
+    }
+  }
+}
+
+recorder.start();
