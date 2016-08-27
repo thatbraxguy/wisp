@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --hot --config webpack.config.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base build/",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   },
   "repository": {
     "type": "git",
@@ -16,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/brfrederick/wisp/issues"
   },
-  "homepage": "https://github.com/brfrederick/wisp#readme"
+  "homepage": "https://github.com/brfrederick/wisp#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "webpack": "^1.13.2"
+  }
 }
