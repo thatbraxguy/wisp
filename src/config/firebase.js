@@ -1,4 +1,4 @@
 export default {
   apiKey: '',
-  authDomain: 'https://wisp.firebaseio.com'
+  databaseURL: 'https://wisp-ced97.firebaseio.com'
 };
