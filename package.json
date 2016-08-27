@@ -20,7 +20,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/brfrederick/wisp/issues"
   },
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "firebase": "^3.3.0",
-    "google-maps": "^3.2.1"
+    "google-maps": "^3.2.1",
+    "ramda": "^0.22.1"
   }
 }
