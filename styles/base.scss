@@ -24,10 +24,13 @@ body {
   pointer-events: all !important; // LAZY FOOL
 }
 
+#message{
+  order: 2;
+  color: $white;
+}
+
 .wisp-date {
   font-size: 10px;
-  color: $white;
-  order: 2;
 }
 
 #map {
