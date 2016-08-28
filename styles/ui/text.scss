@@ -1,24 +1,37 @@
 .voice-text {
   margin-top: 0;
-  max-width: 50vw;
+  max-width: 55vw;
   color: $white;
   order: 2;
   font-size: $font-medium-large;
   text-transform: capitalize;
   line-height: 1.5;
 
-  -webkit-animation: slideup 0.8s ease-in-out;
-  animation: slideup 0.8s ease-in-out;
+  -webkit-animation: slideup 0.4s ease-in-out;
+  animation: slideup 0.4s ease-in-out;
+}
+
+.wisp-date {
+  -webkit-animation: fadeIn 0.9s ease-in;
+  animation: fadeIn 0.9s ease-in;
 }
 
 @keyframes slideup {
   0% { 
     opacity: 0;
-    transform: translate(0, 50px);
-    -webkit-transform: translate(0, 50px);
+    transform: translate(0, 30px);
+    -webkit-transform: translate(0, 30px);
   } 100% { 
     opacity: 1;
     transform: translate(0, 0);
     -webkit-transform: translate(0, -0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { 
+    opacity: 0;
+  } 100% { 
+    opacity: 1;
   }
 }

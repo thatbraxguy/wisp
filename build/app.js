@@ -75,7 +75,7 @@
 	__webpack_require__(26);
 
 	location.init(_config2.default.gmaps).then(location.setMapLocation).then(function () {
-	  wedux.updateState({ view: wedux.VIEW_STATES.DEFAULT });
+	  wedux.updateState({ view: wedux.VIEW_STATES.ONBOARDING });
 	  _wispStore2.default.addListener('child_added', location.createWispMarker);
 	  _wispStore2.default.init();
 	});
@@ -974,12 +974,17 @@
 
 	var _wisp2 = _interopRequireDefault(_wisp);
 
+	var _userMarker = __webpack_require__(34);
+
+	var _userMarker2 = _interopRequireDefault(_userMarker);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var googleObj = void 0;
 	var map = void 0;
 	var geocoder = void 0;
 	var mapIcon = void 0;
+	var userIcon = void 0;
 	var player = void 0;
 	var placeService = void 0;
 
@@ -1007,7 +1012,8 @@
 	  player = new googleObj.maps.Marker({
 	    position: position,
 	    map: map,
-	    draggable: true
+	    draggable: true,
+	    icon: userIcon
 	  });
 
 	  player.addListener('dragend', function () {
@@ -1077,6 +1083,14 @@
 	        origin: new google.maps.Point(0, 0),
 	        anchor: new google.maps.Point(0, 0),
 	        scaledSize: new google.maps.Size(25, 25)
+	      };
+
+	      userIcon = {
+	        url: _userMarker2.default,
+	        size: new google.maps.Size(66, 92),
+	        origin: new google.maps.Point(0, 0),
+	        anchor: new google.maps.Point(12.5, 33),
+	        scaledSize: new google.maps.Size(25, 32)
 	      };
 
 	      map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
@@ -15972,7 +15986,8 @@
 	  MENU: 'MENU',
 	  SETTINGS: 'SETTINGS',
 	  DEFAULT: 'DEFAULT',
-	  LOADING: 'LOADING'
+	  LOADING: 'LOADING',
+	  ONBOARDING: 'ONBOARDING'
 	};
 
 	var BUTTON_STATES = exports.BUTTON_STATES = {
@@ -16040,6 +16055,10 @@
 
 	var _preview2 = _interopRequireDefault(_preview);
 
+	var _onboarding = __webpack_require__(35);
+
+	var _onboarding2 = _interopRequireDefault(_onboarding);
+
 	var _wedux = __webpack_require__(14);
 
 	var wedux = _interopRequireWildcard(_wedux);
@@ -16063,6 +16082,9 @@
 	  },
 	  PREVIEW: function PREVIEW() {
 	    return [(0, _topBar2.default)(wedux.state), (0, _preview2.default)(wedux.state)];
+	  },
+	  ONBOARDING: function ONBOARDING() {
+	    return (0, _onboarding2.default)();
 	  }
 	};
 
@@ -21278,6 +21300,69 @@
 	  console.log(domNode);
 	  Velocity.animate(domNode, { opacity: [0, 1], marginTop: ['10%', 0] }, 300, "ease-out");
 	};
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _maquette = __webpack_require__(17);
+
+	var _wedux = __webpack_require__(14);
+
+	var currSlide = 0;
+	var forward = true;
+	var numSlides = 3;
+
+	var nextSlide = function nextSlide() {
+	  if (currSlide < numSlides - 1) {
+	    currSlide++;
+	    forward = true;
+	  }
+	};
+
+	var lastSlide = function lastSlide() {
+	  if (currSlide != 0) {
+	    currSlide--;
+	    forward = false;
+	  }
+	};
+
+	var skip = function skip() {
+	  (0, _wedux.updateState)({ view: _wedux.VIEW_STATES.DEFAULT });
+	};
+
+	var slides = ['slide 1', 'slide 2', 'slide 3'];
+
+	var getSlides = function getSlides() {
+	  return slides.map(function (slide, i) {
+	    var classnames = 'img.carousel--item';
+
+	    if (i === currSlide) {
+	      classnames += '.active';
+	      classnames += forward ? '.forward' : '.backward';
+	    }
+
+	    return (0, _maquette.h)(classnames, slide);
+	  });
+	};
+
+	var render = function render() {
+	  return [(0, _maquette.h)('button#continueBtn.pointerEvents', { onclick: skip }), (0, _maquette.h)('button#nextBtn.pointerEvents', { onclick: nextSlide }), (0, _maquette.h)('button#prevBtn.pointerEvents', { onclick: lastSlide }), (0, _maquette.h)('div.carousel.pointerEvents', [getSlides()])];
+	};
+
+	exports.default = render;
 
 /***/ }
 /******/ ]);
