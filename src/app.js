@@ -11,7 +11,7 @@ const projector = createProjector();
 
 // View resolver right?
 const viewFunctions = {
-  DEFAULT:  () => [recordButton()],
+  DEFAULT:  () => [recordButton(wedux.state)],
   LISTENING: () => listening(wedux.state),
   LOADING: () => loading(),
   PREVIEW: () => preview(wedux.state),
