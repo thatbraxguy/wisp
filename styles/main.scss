@@ -3,6 +3,24 @@ body {
   margin: 0;
 }
 
+#UI {
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+#MainBut {
+  height: 50px;
+  width: 100px;
+  align-self: flex-end;
+  margin-bottom: 30px;
+}
+
 #map {
   height: 100vh;
   width: 100vw;
