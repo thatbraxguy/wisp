@@ -6,7 +6,7 @@ body {
 #UI {
   height: 100vh;
   width: 100vw;
-  z-index: 1000;
+  z-index: 20;
   top: 0;
   left: 0;
   position: absolute;
@@ -26,4 +26,6 @@ body {
 #map {
   height: 100vh;
   width: 100vw;
+  position: relative;
+  z-index: 10
 }
