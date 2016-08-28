@@ -26,9 +26,9 @@ const render = ({ listenText }) => {
   return [
     h('p.voice-text', [listenText]),
     h('div#preview_buttons', [
-      h('button#cancel_record', { onclick: cancelRecord }, ['X']),
-      h('button#upload_record', { onclick: uploadRecord }, ['^']),
-      h('button#play_preview', { onclick: playPreview }, ['>']),
+      h('button#cancel_record', { onclick: cancelRecord }),
+      h('button#replay_record', { onclick: playPreview }),
+      h('button#upload_record', { onclick: uploadRecord }),
     ]),
   ];
 }

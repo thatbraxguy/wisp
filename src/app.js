@@ -18,7 +18,7 @@ const viewFunctions = {
 };
 
 // #classnames is a good library
-const shadedViews = [wedux.VIEW_STATES.LISTENING];
+const shadedViews = [wedux.VIEW_STATES.LISTENING, wedux.VIEW_STATES.PREVIEW];
 const uiClasses = ({ view }) => contains(view, shadedViews) ? '.ui-shade' : '';
 
 // :P
