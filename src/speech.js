@@ -4,6 +4,7 @@ utterance.lang = "en";
 
 const recorder = new webkitSpeechRecognition();
 recorder.lang = 'en';
+recorder.continuous = true;
 
 const record = cb => {
   recorder.onresult = e => {
