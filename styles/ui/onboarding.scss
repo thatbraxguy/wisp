@@ -1,0 +1,17 @@
+.placeholder {
+	#record_button {
+      -webkit-animation: button-press 1.0s infinite linear;
+      animation: button-press 1.0s infinite linear;
+    }
+}
+
+@keyframes button-press {
+  0%, 40%, 60%, 90%, 100% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  } 75% { 
+    @include transform( scale(1.25, 1.25) );
+    background: $wisp-blue;
+    border: 1px solid $wisp-blue;
+  }
+}
