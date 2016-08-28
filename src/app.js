@@ -23,11 +23,22 @@ const shadedViews = [wedux.VIEW_STATES.LISTENING, wedux.VIEW_STATES.PREVIEW];
 const uiClasses = ({ view }) => contains(view, shadedViews) ? '.ui-shade' : '';
 
 // :P
-const render = state =>
-  h('div', [
+const render = state => {
+  const currentUI = viewFunctions[state.view]();
+  if (state.isPendingRequest) {
+    console.log('bae');
+    currentUI.push(h('div.request-pending', [
+      h('div.bounce1'),
+      h('div.bounce2'),
+      h('div.bounce3'),
+    ]));
+  }
+
+  return h('div', [
     h('div#map'),
-    h(`div#UI${uiClasses(state)}`, viewFunctions[state.view]()),
+    h(`div#UI${uiClasses(state)}`, currentUI),
   ]);
+}
 
 document.addEventListener('DOMContentLoaded', () =>
   projector.append(document.querySelector('#app'), () => render(wedux.state), {transitions: cssTransitions}));

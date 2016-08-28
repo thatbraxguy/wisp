@@ -17,7 +17,8 @@ export const BUTTON_STATES = {
 
 const getInitialSate = () => ({
   view: VIEW_STATES.LOADING,
-  button: BUTTON_STATES.INACTIVE
+  button: BUTTON_STATES.INACTIVE,
+  isPendingRequest: false,
 });
 export let state = getInitialSate();
 

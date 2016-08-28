@@ -16,18 +16,18 @@ const fadeOut = function(domNode, removeDomNodeFunction, properties) {
 
 const onmousedown = () => {
   updateState({ button: BUTTON_STATES.ACTIVE });
-  speech.record(listenText => updateState({ view: VIEW_STATES.PREVIEW, listenText }));
+  speech.record(listenText => updateState({ view: VIEW_STATES.PREVIEW, listenText, isPendingRequest: false }));
 };
 
 const onmouseup = () => {
   speech.stopRecording();
-  updateState({ button: BUTTON_STATES.INACTIVE });
+  updateState({ button: BUTTON_STATES.INACTIVE, isPendingRequest: true });
   //updateState({ view: VIEW_STATES.PREVIEW, button: BUTTON_STATES.INACTIVE });
 };
 
 const render = (state) =>{
   const recordingScreen = h(
-    'div.recording', 
+    'div.recording',
     { enterAnimation: fadeIn, exitAnimation: fadeOut },
     [
       h('div.recording__wrapper',
@@ -42,7 +42,7 @@ const render = (state) =>{
     ]
    );
   const toggle = (state.button === BUTTON_STATES.ACTIVE) ? recordingScreen : h('div.recording');
-  return [ 
+  return [
     toggle,
     h('button#record_button.initial.ui-center-button', {
       onmousedown,

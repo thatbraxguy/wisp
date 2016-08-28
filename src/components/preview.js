@@ -7,8 +7,10 @@ import wispStore from '../wispStore';
 
 let data = '';
 
-const uploadRecord = () =>
-  getPlayerLocation()
+const uploadRecord = () => {
+  updateState({ isPendingRequest: false });
+
+  return getPlayerLocation()
     .then(({ lat, lng }) => {
       wispStore.push({
         lat,
@@ -16,7 +18,8 @@ const uploadRecord = () =>
         message: data,
       });
     })
-    .then(() => updateState({ view: VIEW_STATES.DEFAULT }));
+    .then(() => updateState({ view: VIEW_STATES.DEFAULT, isPendingRequest: false }));
+};
 
 const cancelRecord = () => updateState({ view: VIEW_STATES.DEFAULT });
 const playPreview = () => speech.speak(data);
