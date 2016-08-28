@@ -25,15 +25,25 @@ const skip = () => {
 };
 
 const slides = [
-  h('div#slide1', [
-    h('h1', 'WISP')
+  h('div#slide1.slide', [
+    h('div.slide__wrapper', [
+      h('h1.logo', 'WISP'),
+      h('p', 'Leaving memories for you to rediscover again.')
+    ])
   ]),
-  h('div#slide2', [
-    h('button#record_button.initial.ui-center-button')
+  h('div#slide2.slide', [
+    h('div.slide__wrapper', [
+      h('h3', 'Leaving Wisps'),
+      h('button#record_button.initial.ui-center-button'),
+      h('p', 'While presing on the record button, speak and leave your message.')
+    ])
   ]),
-  h('div#slide3', [
-    h('h3', 'Viewing Wisps'),
-    h('img', { src: viewingWispsAsset })
+  h('div#slide2.slide', [
+    h('div.slide__wrapper', [
+      h('h3', 'Viewing Wisps'),
+      h('img', { src: viewingWispsAsset }),
+      h('p', 'Listen to other wisps people have left by pressing on them.')
+    ])
   ]),
 ];
 
@@ -52,9 +62,11 @@ const getSlides = () =>
 
 const render = () => {
   return h('div.onboarding', [
-    h('button#continueBtn.pointerEvents', { onclick: skip }),
-    h('button#nextBtn.pointerEvents', { onclick: nextSlide }),
-    h('button#prevBtn.pointerEvents', { onclick: lastSlide }),
+    h('button#continueBtn.pointerEvents.carousel-btn', { onclick: skip }, ["Continue"]),
+    h('section.bottom-actions', [
+      h('button#prevBtn.pointerEvents.carousel-btn', { onclick: lastSlide }),
+      h('button#nextBtn.pointerEvents.carousel-btn', { onclick: nextSlide })
+    ]),
     h('div.carousel.pointerEvents', [getSlides()]),
   ]);
 }
