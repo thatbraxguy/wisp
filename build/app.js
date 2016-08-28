@@ -21321,12 +21321,6 @@
 
 	var _wedux = __webpack_require__(14);
 
-	var _onboardWisp = __webpack_require__(36);
-
-	var _onboardWisp2 = _interopRequireDefault(_onboardWisp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var currSlide = 0;
 	var forward = true;
 	var numSlides = 3;
@@ -21349,7 +21343,7 @@
 	  (0, _wedux.updateState)({ view: _wedux.VIEW_STATES.DEFAULT });
 	};
 
-	var slides = [(0, _maquette.h)('div#slide1.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h1.logo', 'WISP'), (0, _maquette.h)('p', 'Leaving memories for you to rediscover again.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Leaving Wisps'), (0, _maquette.h)('button#record_button.initial.ui-center-button'), (0, _maquette.h)('p', 'While presing on the record button, speak and leave your message.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Viewing Wisps'), (0, _maquette.h)('img', { src: _onboardWisp2.default }), (0, _maquette.h)('p', 'Listen to other wisps people have left by pressing on them.')])])];
+	var slides = [(0, _maquette.h)('div#slide1.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h1.logo', 'WISP'), (0, _maquette.h)('p', 'Leaving memories for you to discover again.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Leaving Wisps'), (0, _maquette.h)('button#record_button.initial.ui-center-button'), (0, _maquette.h)('p', 'While presing on the record button, speak and leave your message.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Viewing Wisps'), (0, _maquette.h)('img', { src: 'http://i.imgur.com/KhT1kst.png' }), (0, _maquette.h)('p', 'Listen to other wisps people have left by pressing on them.')])])];
 
 	var getSlides = function getSlides() {
 	  return slides.map(function (slide, i) {
@@ -21370,12 +21364,6 @@
 	};
 
 	exports.default = render;
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "onboard-wisp-f32dbd1d26c309e95b9dd6e10c31e361.png";
 
 /***/ }
 /******/ ]);

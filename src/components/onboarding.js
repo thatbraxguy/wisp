@@ -1,6 +1,5 @@
 import { h } from 'maquette';
 import { VIEW_STATES, updateState } from '../wedux';
-import viewingWispsAsset from '../assets/onboard-wisp.png';
 
 let currSlide = 0;
 let forward = true;
@@ -28,7 +27,7 @@ const slides = [
   h('div#slide1.slide', [
     h('div.slide__wrapper', [
       h('h1.logo', 'WISP'),
-      h('p', 'Leaving memories for you to rediscover again.')
+      h('p', 'Leaving memories for you to discover again.')
     ])
   ]),
   h('div#slide2.slide', [
@@ -41,7 +40,7 @@ const slides = [
   h('div#slide2.slide', [
     h('div.slide__wrapper', [
       h('h3', 'Viewing Wisps'),
-      h('img', { src: viewingWispsAsset }),
+      h('img', { src: 'http://i.imgur.com/KhT1kst.png' }),
       h('p', 'Listen to other wisps people have left by pressing on them.')
     ])
   ]),
