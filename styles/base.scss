@@ -16,6 +16,11 @@ body {
   pointer-events: none;
 }
 
+.ui-shade {
+  background: rgba($wisp-dark-gray, 0.8);
+  pointer-events: all !important; // LAZY FOOL
+}
+
 #map {
   height: 100vh;
   width: 100vw;

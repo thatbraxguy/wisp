@@ -1,24 +1,29 @@
 import { h, createProjector } from 'maquette';
 import cssTransitions from 'css-transition';
-const projector = createProjector();
+import { contains } from 'ramda';
 
 import recordButton from './components/recordButton';
 import listening from './components/listening';
 import loading from './components/loading';
 import * as wedux from './wedux';
+const projector = createProjector();
 
 // View resolver right?
-const views = {
+const viewFunctions = {
   DEFAULT:  () => [recordButton()],
   LISTENING: () => listening(wedux.state),
   LOADING: () => loading(),
 };
 
+// #classnames is a good library
+const shadedViews = [wedux.VIEW_STATES.LISTENING];
+const uiClasses = ({ view }) => contains(view, shadedViews) ? '.ui-shade' : '';
+
 // :P
 const render = state =>
   h('div', [
     h('div#map'),
-    h('div#UI', views[state.view]()),
+    h(`div#UI${uiClasses(state)}`, viewFunctions[state.view]()),
   ]);
 
 document.addEventListener('DOMContentLoaded', () =>
