@@ -1,11 +1,11 @@
 body {
-  background-color: aqua;
+  background-color: #424242;
   margin: 0;
 }
 
 #UI {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   z-index: 20;
   top: 0;
   left: 0;
@@ -16,10 +16,13 @@ body {
 }
 
 #MainBut {
-  height: 50px;
-  width: 100px;
+  background: #424242;
+  color: #fff;
+  font-size: 14px;
+  border: 2px solid #fff;
   align-self: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 10%;
+  padding: 1em;
   pointer-events: all;
 }
 
