@@ -532,4 +532,5 @@ body {
   margin: 1em auto; }
 
 .slide img {
-  width: 100vw; }
+  width: 100vw;
+  max-width: 100%; }
