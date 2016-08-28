@@ -1,0 +1,31 @@
+#record_button {
+  @include circle(60px, $wisp-dark-gray);
+  color: $white;
+  font-size: $font-semi-large;
+  border: 1px solid $white;
+  align-self: flex-end;
+  margin-bottom: 10%;
+  pointer-events: all;
+  outline: none;
+  text-align: center;
+
+  &.initial {
+  	&:before {
+  		font-family: $font-fa;
+  		content: '\f130';
+  		display: block;
+  	}
+  	&:active{
+  		background: $wisp-blue;
+  	}
+  }
+}
+
+.ui-center-button {
+  height: 50px;
+  width: 100px;
+  align-self: flex-end;
+  margin-bottom: 10%;
+  padding: 1em;
+  pointer-events: all;
+}

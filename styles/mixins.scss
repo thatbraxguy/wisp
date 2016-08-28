@@ -1,0 +1,21 @@
+@mixin circle($width, $color) {
+  width: $width;
+  height: $width;
+  background: $color;
+  -webkit-border-radius: $width/2;
+     -moz-border-radius: $width/2;
+          border-radius: $width/2;
+}
+
+@mixin transition( $prop... ) {
+	-moz-transition: $prop;
+	-o-transition: $prop;
+	-webkit-transition: $prop;
+	transition: $prop;
+}
+
+@mixin transform( $prop ) {
+	-ms-transform: $prop; /* IE 9 */
+	-webkit-transform: $prop; /* Safari */
+ 	transform: $prop;
+}

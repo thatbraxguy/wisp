@@ -3,7 +3,7 @@ import Promise from 'bluebird';
 import { forEach } from 'ramda';
 
 import config from './config';
-import speech from './speech';
+import { VIEW_STATES, updateState } from './wedux';
 
 let googleObj;
 let map;
@@ -28,7 +28,7 @@ export const createWispMarker = ({ lat, lng, message }) =>
         map,
       })
     .addListener('click', () => {
-      speech.speak(message);
+      updateState({ listenText: message, view: VIEW_STATES.LISTENING,});
       geocoder.geocode({'location':{lat, lng}}, (res, status) => {
         if(status === 'OK'){
           console.log(res[0]);
