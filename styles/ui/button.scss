@@ -1,4 +1,4 @@
-#mainButton {
+#record_button {
   @include circle(60px, $wisp-dark-gray);
   color: $white;
   font-size: $font-semi-large;
@@ -19,4 +19,13 @@
   		background: $wisp-blue;
   	}
   }
+}
+
+.ui-center-button {
+  height: 50px;
+  width: 100px;
+  align-self: flex-end;
+  margin-bottom: 10%;
+  padding: 1em;
+  pointer-events: all;
 }
