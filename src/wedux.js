@@ -8,6 +8,7 @@ export const VIEW_STATES = {
   SETTINGS: 'SETTINGS',
   DEFAULT: 'DEFAULT',
   LOADING: 'LOADING',
+  ONBOARDING: 'ONBOARDING',
 };
 
 export const BUTTON_STATES = {

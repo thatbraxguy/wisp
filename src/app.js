@@ -7,6 +7,7 @@ import recordButton from './components/recordButton';
 import listening from './components/listening';
 import loading from './components/loading';
 import preview from './components/preview';
+import onboarding from './components/onboarding';
 import * as wedux from './wedux';
 const projector = createProjector();
 
@@ -16,6 +17,7 @@ const viewFunctions = {
   LISTENING: () => [topBar(wedux.state), listening(wedux.state)],
   LOADING: () => loading(),
   PREVIEW: () => [topBar(wedux.state), preview(wedux.state)],
+  ONBOARDING: () => onboarding(),
 };
 
 // #classnames is a good library
