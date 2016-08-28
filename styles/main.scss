@@ -6,12 +6,13 @@ body {
 #UI {
   height: 100vh;
   width: 100vw;
-  z-index: 10;
+  z-index: 1000;
   top: 0;
   left: 0;
   position: absolute;
   display: flex;
   justify-content: center;
+  pointer-events: none;
 }
 
 #MainBut {
@@ -19,6 +20,7 @@ body {
   width: 100px;
   align-self: flex-end;
   margin-bottom: 30px;
+  pointer-events: all;
 }
 
 #map {
