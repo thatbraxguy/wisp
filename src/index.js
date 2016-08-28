@@ -2,7 +2,7 @@ import config from './config';
 import db from './db';
 import wisps from './wispStore';
 import * as location from './location';
-
+import speech from './speech';
 require('../styles/main.scss');
 
 console.log(config);
@@ -19,3 +19,5 @@ location.init(config.gmaps)
 
 // switch callback to instead create a node on the map!
 wisps.addListener('child_added', data => console.log(data));
+
+speech.record(x => speech.speak(x));
