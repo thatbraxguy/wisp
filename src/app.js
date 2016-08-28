@@ -1,6 +1,7 @@
 import { h, createProjector } from 'maquette';
 import { contains } from 'ramda';
 
+import topBar from './components/topBar';
 import recordButton from './components/recordButton';
 import listening from './components/listening';
 import * as wedux from './wedux';
@@ -8,7 +9,7 @@ const projector = createProjector();
 
 // View resolver right?
 const viewFunctions = {
-  DEFAULT:  () => [recordButton()],
+  DEFAULT:  () => [topBar(wedux.state), recordButton()],
   LISTENING: () => listening(wedux.state),
 }
 
