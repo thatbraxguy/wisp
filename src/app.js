@@ -1,8 +1,10 @@
 import { h, createProjector } from 'maquette';
+import cssTransitions from 'css-transition';
 import { contains } from 'ramda';
 
 import recordButton from './components/recordButton';
 import listening from './components/listening';
+import loading from './components/loading';
 import * as wedux from './wedux';
 const projector = createProjector();
 
@@ -10,7 +12,8 @@ const projector = createProjector();
 const viewFunctions = {
   DEFAULT:  () => [recordButton()],
   LISTENING: () => listening(wedux.state),
-}
+  LOADING: () => loading(),
+};
 
 // #classnames is a good library
 const shadedViews = [wedux.VIEW_STATES.LISTENING];
@@ -24,6 +27,6 @@ const render = state =>
   ]);
 
 document.addEventListener('DOMContentLoaded', () =>
-  projector.append(document.querySelector('#app'), () => render(wedux.state)));
+  projector.append(document.querySelector('#app'), () => render(wedux.state), {transitions: cssTransitions}));
 
 wedux.connect(() => projector.scheduleRender());
