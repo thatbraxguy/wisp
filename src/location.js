@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import { forEach } from 'ramda';
 
 import config from './config';
+import speech from './speech';
 
 let map;
 let googleObj;
@@ -25,7 +26,7 @@ export const createWispMarker = ({ lat, lng, message }) =>
         position: { lat, lng },
         map,
       })
-    .addListener('click', () => console.log(message));
+    .addListener('click', () => speech.speak(message));
 
 export const init = config =>
   new Promise(resolve => {

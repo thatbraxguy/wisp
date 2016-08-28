@@ -2,12 +2,12 @@ import config from './config';
 import db from './db';
 import wisps from './wispStore';
 import * as location from './location';
-import speech from './speech';
+// import speech from './speech';
 import control from './UI_Controls'
 
 require('../styles/main.scss');
 
-speech.record(x => speech.speak(x));
+// speech.record(x => speech.speak(x));
 
 location.init(config.gmaps)
 .then(location.setMapLocation)
