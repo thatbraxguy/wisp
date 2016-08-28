@@ -3,24 +3,33 @@ const projector = createProjector();
 
 import recordButton from './components/recordButton';
 
-const VIEW_STATES = {
+// some sweet state
+// expose that sultry state
+export const VIEW_STATES = {
   RECORDING: 'RECORDING',
   PREVIEW: 'PREVIEW',
-
+  LISTENING: 'LISTENING',
+  MENU: 'MENU',
+  SETTINGS: 'SETTINGS',
+  DEFAULT: 'DEFAULT',
 };
 
-const screenState = {
-  view: VIEW_STATES.RECORDING, //
-};
+const getInitialSate = () => ({
+  view: VIEW_STATES.DEFAULT,
+});
+export const state = getInitialSate();
 
-function render() {
-  return h('div', [
+// View resolver right?
+const views = {
+  DEFAULT:  [recordButton()],
+}
+
+// :P
+const render = () =>
+  h('div', [
     h('div#map'),
-    h('div#UI', [
-      recordButton()
-    ])
+    h('div#UI', views[state.view]),
   ]);
-};
 
 document.addEventListener('DOMContentLoaded', () =>
   projector.append(document.querySelector('#app'), render));
