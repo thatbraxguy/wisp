@@ -32,12 +32,12 @@ body {
   background: rgba(0, 0, 0, 0.8);
   pointer-events: all !important; }
 
-.voice-text {
-  margin-top: 0;
-  max-width: 65vw;
-  color: #fff;
-  font-size: 20px;
-  order: 2; }
+#message {
+  order: 2;
+  color: #fff; }
+
+.wisp-date {
+  font-size: 10px; }
 
 #map {
   height: 100vh;
@@ -47,12 +47,12 @@ body {
 
 #record_button {
   border: 1px solid #fff;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   background: #424242;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
   -moz-transition: transform 0.4s, border 0.3s;
   -o-transition: transform 0.4s, border 0.3s;
   -webkit-transition: transform 0.4s, border 0.3s;
@@ -100,8 +100,14 @@ body {
   text-align: center;
   pointer-events: all;
   outline: none;
-  text-align: center; }
+  text-align: center;
+  -webkit-animation: popin 0.3s ease-in-out;
+  animation: popin 0.3s ease-in-out; }
   #preview_buttons button {
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
     outline: none; }
 
 #replay_record {
@@ -117,12 +123,22 @@ body {
   font-size: 24px;
   border-color: rgba(0, 0, 0, 0.8); }
   #replay_record:before {
+    -moz-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    -webkit-transition: transform 0.3s;
+    transition: transform 0.3s;
     font-family: FontAwesome;
     content: "\F021";
     display: block; }
   #replay_record:active {
     background: #fff;
     color: #252424; }
+    #replay_record:active:before {
+      -ms-transform: rotate(360deg);
+      /* IE 9 */
+      -webkit-transform: rotate(360deg);
+      /* Safari */
+      transform: rotate(360deg); }
 
 #cancel_record {
   pointer-events: all;
@@ -135,6 +151,11 @@ body {
     font-family: FontAwesome;
     content: "\F00D";
     display: block; }
+  #cancel_record:active {
+    transform: scale(2, 2);
+    background: #fb4359;
+    color: #fff;
+    border-radius: 5px; }
 
 #upload_record {
   pointer-events: all;
@@ -147,14 +168,19 @@ body {
     font-family: FontAwesome;
     content: "\F064";
     display: block; }
+  #upload_record:active {
+    transform: scale(2, 2);
+    background: #00aeef;
+    color: #fff;
+    border-radius: 5px; }
 
 .ui-center-button {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   background: #424242;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
   color: #fff;
   font-size: 20px;
   margin-bottom: 15%;
@@ -227,6 +253,14 @@ body {
     transform: scale(0);
     -webkit-transform: scale(0); }
   50% {
+    transform: scale(1);
+    -webkit-transform: scale(1); } }
+
+@keyframes popin {
+  0% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+  100% {
     transform: scale(1);
     -webkit-transform: scale(1); } }
 
@@ -315,13 +349,34 @@ body {
   padding-left: 20px;
   padding-top: 5px;
   padding-bottom: 1px;
-  background: rgba(0, 0, 0, 0.6); }
+  background: rgba(37, 36, 36, 0.9); }
   #current_location #current {
     color: #7a7a7a;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: -7px; }
   #current_location #address {
-    font-size: 18px; }
+    font-size: 16px; }
 
 #compass {
   content: '\F14E'; }
+
+.voice-text {
+  margin-top: 0;
+  max-width: 50vw;
+  color: #fff;
+  order: 2;
+  font-size: 18px;
+  text-transform: capitalize;
+  line-height: 1.5;
+  -webkit-animation: slideup 0.8s ease-in-out;
+  animation: slideup 0.8s ease-in-out; }
+
+@keyframes slideup {
+  0% {
+    opacity: 0;
+    transform: translate(0, 50px);
+    -webkit-transform: translate(0, 50px); }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0); } }

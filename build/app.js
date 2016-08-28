@@ -72,7 +72,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(25);
+	__webpack_require__(26);
 
 	location.init(_config2.default.gmaps).then(location.setMapLocation).then(function () {
 	  wedux.updateState({ view: wedux.VIEW_STATES.DEFAULT });
@@ -1054,12 +1054,13 @@
 	  var lat = _ref5.lat;
 	  var lng = _ref5.lng;
 	  var message = _ref5.message;
+	  var datetime = _ref5.datetime;
 	  return new googleObj.maps.Marker({
 	    position: { lat: lat, lng: lng },
 	    map: map,
 	    icon: mapIcon
 	  }).addListener('click', function () {
-	    return (0, _wedux.updateState)({ listenText: message, view: _wedux.VIEW_STATES.LISTENING });
+	    return (0, _wedux.updateState)({ listenText: message, datetime: datetime, view: _wedux.VIEW_STATES.LISTENING });
 	  });
 	};
 
@@ -16019,23 +16020,23 @@
 
 	var _ramda = __webpack_require__(13);
 
-	var _topBar = __webpack_require__(32);
+	var _topBar = __webpack_require__(19);
 
 	var _topBar2 = _interopRequireDefault(_topBar);
 
-	var _recordButton = __webpack_require__(19);
+	var _recordButton = __webpack_require__(20);
 
 	var _recordButton2 = _interopRequireDefault(_recordButton);
 
-	var _listening = __webpack_require__(22);
+	var _listening = __webpack_require__(23);
 
 	var _listening2 = _interopRequireDefault(_listening);
 
-	var _loading = __webpack_require__(23);
+	var _loading = __webpack_require__(24);
 
 	var _loading2 = _interopRequireDefault(_loading);
 
-	var _preview = __webpack_require__(24);
+	var _preview = __webpack_require__(25);
 
 	var _preview2 = _interopRequireDefault(_preview);
 
@@ -17088,35 +17089,61 @@
 	  value: true
 	});
 
+	var _maquette = __webpack_require__(17);
+
+	var _location = __webpack_require__(8);
+
+	var location = _interopRequireWildcard(_location);
+
+	var _wispStore = __webpack_require__(7);
+
+	var _wispStore2 = _interopRequireDefault(_wispStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var clickeduseless = function clickeduseless() {
+	  console.log("incomplete functions");
+	};
+
+	var render = function render(state) {
+	  return (0, _maquette.h)('div#top_bar', [(0, _maquette.h)('div#current_location', [(0, _maquette.h)('p#current', 'CURRENT LOCATION'), (0, _maquette.h)('p#address', state.currentLocation)])]);
+	};
+
+	exports.default = render;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _location = __webpack_require__(8);
 
 	var location = _interopRequireWildcard(_location);
 
 	var _maquette = __webpack_require__(17);
 
-	var _speech = __webpack_require__(20);
+	var _speech = __webpack_require__(21);
 
 	var _speech2 = _interopRequireDefault(_speech);
 
 	var _wedux = __webpack_require__(14);
 
-	var _velocityAnimate = __webpack_require__(21);
+	var _velocityAnimate = __webpack_require__(22);
 
 	var _velocityAnimate2 = _interopRequireDefault(_velocityAnimate);
+
+	var _animations = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	var fadeIn = function fadeIn(domNode, removeDomNodeFunction, properties) {
-	  domNode.style.opacity = 0;
-	  _velocityAnimate2.default.animate(domNode, { opacity: 1 }, 200, "ease-out");
-	};
-
-	var fadeOut = function fadeOut(domNode, removeDomNodeFunction, properties) {
-	  domNode.style.opacity = 1;
-	  _velocityAnimate2.default.animate(domNode, { opacity: 0 }, 200, "ease-out", removeDomNodeFunction);
-	};
 
 	var onmousedown = function onmousedown() {
 	  (0, _wedux.updateState)({ button: _wedux.BUTTON_STATES.ACTIVE });
@@ -17132,7 +17159,7 @@
 	};
 
 	var render = function render(state) {
-	  var recordingScreen = (0, _maquette.h)('div.recording', { enterAnimation: fadeIn, exitAnimation: fadeOut }, [(0, _maquette.h)('div.recording__wrapper', [(0, _maquette.h)('div.spinner', [(0, _maquette.h)('div.double-bounce1'), (0, _maquette.h)('div.double-bounce2')]), (0, _maquette.h)('p.recording__instruction', ["record your wisp"])])]);
+	  var recordingScreen = (0, _maquette.h)('div.recording', { enterAnimation: _animations.fadeIn, exitAnimation: _animations.fadeOut }, [(0, _maquette.h)('div.recording__wrapper', [(0, _maquette.h)('div.spinner', [(0, _maquette.h)('div.double-bounce1'), (0, _maquette.h)('div.double-bounce2')]), (0, _maquette.h)('p.recording__instruction', ["record your wisp"])])]);
 	  var toggle = state.button === _wedux.BUTTON_STATES.ACTIVE ? recordingScreen : (0, _maquette.h)('div.recording');
 	  return [toggle, (0, _maquette.h)('button#record_button.initial.ui-center-button', {
 	    onmousedown: onmousedown,
@@ -17145,7 +17172,7 @@
 	exports.default = render;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17198,7 +17225,7 @@
 	};
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS.org (1.2.3). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
@@ -21089,7 +21116,7 @@
 	will produce an inaccurate conversion value. The same issue exists with the cx/cy attributes of SVG circles and ellipses. */
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21102,7 +21129,7 @@
 
 	var _wedux = __webpack_require__(14);
 
-	var _speech = __webpack_require__(20);
+	var _speech = __webpack_require__(21);
 
 	var _speech2 = _interopRequireDefault(_speech);
 
@@ -21114,16 +21141,18 @@
 
 	var render = function render(_ref) {
 	  var listenText = _ref.listenText;
+	  var datetime = _ref.datetime;
 	  var listenProgress = _ref.listenProgress;
 
 	  _speech2.default.speak(listenText);
-	  return [(0, _maquette.h)('p.voice-text', [listenText]), (0, _maquette.h)('button#close_button.ui-center-button', { onmouseup: onmouseup })];
+	  console.log('datetime', datetime);
+	  return [(0, _maquette.h)('div#message', [(0, _maquette.h)('p.voice-text', [listenText]), (0, _maquette.h)('p.wisp-date', datetime)]), (0, _maquette.h)('button#close_button.ui-center-button', { onmouseup: onmouseup })];
 	};
 
 	exports.default = render;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21134,7 +21163,7 @@
 
 	var _maquette = __webpack_require__(17);
 
-	var _velocityAnimate = __webpack_require__(21);
+	var _velocityAnimate = __webpack_require__(22);
 
 	var _velocityAnimate2 = _interopRequireDefault(_velocityAnimate);
 
@@ -21152,7 +21181,7 @@
 	exports.default = render;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21165,7 +21194,7 @@
 
 	var _wedux = __webpack_require__(14);
 
-	var _speech = __webpack_require__(20);
+	var _speech = __webpack_require__(21);
 
 	var _speech2 = _interopRequireDefault(_speech);
 
@@ -21178,16 +21207,20 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var data = '';
+	var date = void 0;
 
 	var uploadRecord = function uploadRecord() {
-	  return (0, _location.getPlayerLocation)().then(function (_ref) {
+	  date = new Date();
+	  var datetime = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+	  (0, _location.getPlayerLocation)().then(function (_ref) {
 	    var lat = _ref.lat;
 	    var lng = _ref.lng;
 
 	    _wispStore2.default.push({
 	      lat: lat,
 	      lng: lng,
-	      message: data
+	      message: data,
+	      datetime: datetime
 	    });
 	  }).then(function () {
 	    return (0, _wedux.updateState)({ view: _wedux.VIEW_STATES.DEFAULT });
@@ -21211,50 +21244,40 @@
 	exports.default = render;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 26 */,
 /* 27 */,
 /* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/* 32 */,
+/* 33 */
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _maquette = __webpack_require__(17);
-
-	var _location = __webpack_require__(8);
-
-	var location = _interopRequireWildcard(_location);
-
-	var _wispStore = __webpack_require__(7);
-
-	var _wispStore2 = _interopRequireDefault(_wispStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	var clickeduseless = function clickeduseless() {
-	  console.log("incomplete functions");
+	var fadeIn = exports.fadeIn = function fadeIn(domNode, removeDomNodeFunction, properties) {
+	  domNode.style.opacity = 0;
+	  Velocity.animate(domNode, { opacity: 1 }, 300, "ease-out");
 	};
 
-	var render = function render(state) {
-	  return (0, _maquette.h)('div#top_bar', [(0, _maquette.h)('div#current_location', [(0, _maquette.h)('p#current', 'CURRENT LOCATION'), (0, _maquette.h)('p#address', state.currentLocation)])]);
+	var fadeOut = exports.fadeOut = function fadeOut(domNode, removeDomNodeFunction, properties) {
+	  domNode.style.opacity = 1;
+	  Velocity.animate(domNode, { opacity: 0 }, 300, "ease-out", removeDomNodeFunction);
 	};
 
-	exports.default = render;
+	var slideIn = exports.slideIn = function slideIn(domNode, removeDomNodeFunction, properties) {
+	  console.log(domNode);
+	  Velocity.animate(domNode, { opacity: [0, 1], marginTop: ['10%', 0] }, 300, "ease-out");
+	};
 
 /***/ }
 /******/ ]);

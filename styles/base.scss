@@ -24,12 +24,13 @@ body {
   pointer-events: all !important; // LAZY FOOL
 }
 
-.voice-text {
-  margin-top: 0;
-  max-width: 65vw;
-  color: $white;
-  font-size: $font-semi-large;
+#message{
   order: 2;
+  color: $white;
+}
+
+.wisp-date {
+  font-size: 10px;
 }
 
 #map {

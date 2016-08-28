@@ -3,16 +3,7 @@ import { h } from 'maquette';
 import speech from '../speech';
 import { BUTTON_STATES, VIEW_STATES, updateState } from '../wedux';
 import Velocity from 'velocity-animate';
-
-const fadeIn = function(domNode, removeDomNodeFunction, properties) {
-  domNode.style.opacity = 0;
-  Velocity.animate(domNode, { opacity: 1 }, 200, "ease-out");
-};
-
-const fadeOut = function(domNode, removeDomNodeFunction, properties) {
-  domNode.style.opacity = 1;
-  Velocity.animate(domNode, { opacity: 0 }, 200, "ease-out", removeDomNodeFunction);
-};
+import { fadeIn, fadeOut } from '../animations';
 
 const onmousedown = () => {
   updateState({ button: BUTTON_STATES.ACTIVE });
