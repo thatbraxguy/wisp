@@ -43,6 +43,7 @@
     "firebase": "^3.3.0",
     "font-awesome": "^4.6.3",
     "google-maps": "^3.2.1",
+    "maquette": "^2.3.5",
     "ramda": "^0.22.1"
   }
 }
