@@ -1,8 +1,8 @@
 #mainButton {
   @include circle(60px, $wisp-dark-gray);
-  color: #fff;
+  color: $white;
   font-size: $font-semi-large;
-  border: 1px solid #fff;
+  border: 1px solid $white;
   align-self: flex-end;
   margin-bottom: 10%;
   pointer-events: all;
