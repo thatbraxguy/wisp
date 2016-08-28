@@ -4,6 +4,7 @@ export default{
     zoom: 20,
     center: {lat: -34.397, lng: 150.644},
     disableDefaultUI: true,
+    zoomControl: true,
     draggable: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
