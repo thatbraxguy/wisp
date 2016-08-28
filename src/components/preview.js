@@ -2,17 +2,17 @@ import { h } from 'maquette';
 
 import { VIEW_STATES, updateState } from '../wedux';
 import speech from '../speech';
-import { getUserLocation } from '../location';
+import { getPlayerLocation } from '../location';
 import wispStore from '../wispStore';
 
 let data = '';
 
 const uploadRecord = () =>
-  getUserLocation()
-    .then(({ latitude, longitude }) => {
+  getPlayerLocation()
+    .then(({ lat, lng }) => {
       wispStore.push({
-        lat: latitude,
-        lng: longitude,
+        lat,
+        lng,
         message: data,
       });
     })

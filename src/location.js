@@ -11,6 +11,7 @@ let googleObj;
 let map;
 let geocoder;
 let mapIcon;
+let player;
 
 const minZoom = 18;
 
@@ -22,10 +23,27 @@ export const getUserLocation = () =>
     }
   });
 
+export const getPlayerLocation = () => new Promise((resolve, reject) => {
+  const pos = player.getPosition();
+  resolve({ lat: pos.lat(), lng: pos.lng() });
+});
+
+const makePlayerMarker = (position) => {
+  player = new googleObj.maps.Marker({
+    position,
+    map,
+    draggable: true,
+  })
+
+  player.addListener('dragend', () => console.log(getPlayerLocation()));
+};
+
 export const setMapLocation = ({ maps }) =>
-  getUserLocation().then(({ latitude, longitude }) =>
-    map.setCenter(new maps.LatLng(latitude, longitude))
-  );
+  getUserLocation().then(({ latitude, longitude }) => {
+    const center = new maps.LatLng(latitude, longitude);
+    map.setCenter(center);
+    makePlayerMarker(center);
+  });
 
 export const createWispMarker = ({ lat, lng, message }) =>
     new googleObj.maps.Marker({
