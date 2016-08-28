@@ -108,7 +108,7 @@ export default{
         },
         {
             "featureType": "poi",
-            "elementType": "geometry",
+            "elementType": "geometry.fill",
             "stylers": [
                 {
                     "color": "#7a7a7a"
@@ -120,13 +120,10 @@ export default{
         },
         {
             "featureType": "poi",
-            "elementType": "geometry.fill",
+            "elementType": "labels",
             "stylers": [
                 {
-                    "color": "#7a7a7a"
-                },
-                {
-                    "lightness": 21
+                  visibility: "on"
                 }
             ]
         },
