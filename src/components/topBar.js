@@ -8,12 +8,10 @@ const clickeduseless = () =>{
 
 const render = state =>
     h('div#top_bar', [
-      h('button#side_menu', {clickeduseless}),
       h('div#current_location', [
-        h('p#current', 'currentLocation'),
+        h('p#current', 'CURRENT LOCATION'),
         h('p#address', state.currentLocation)
       ]),
-      h('button#compass', {onmousedown})
     ]);
 
 export default render;
