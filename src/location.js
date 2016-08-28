@@ -4,12 +4,14 @@ import { forEach } from 'ramda';
 
 import config from './config';
 import { VIEW_STATES, updateState } from './wedux';
+import wispAsset from './assets/wisp.png';
+console.log();
 
 let googleObj;
 let map;
 let geocoder;
 let placeService;
-
+let mapIcon;
 const minZoom = 18;
 
 export const getUserLocation = () =>
@@ -56,6 +58,7 @@ export const createWispMarker = ({ lat, lng, message }) =>
     new googleObj.maps.Marker({
         position: { lat, lng },
         map,
+        icon: mapIcon,
       })
     .addListener('click', () => {
       updateState({ listenText: message, view: VIEW_STATES.LISTENING,});
@@ -77,6 +80,14 @@ export const init = config =>
     GoogleMapLoader.LIBRARIES = ['places'];
     GoogleMapLoader.load(google => {
       googleObj = google;
+
+      mapIcon = {
+        url: wispAsset,
+        size: new google.maps.Size(45, 45),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 0),
+        scaledSize: new google.maps.Size(25, 25)
+      };
 
       map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
       geocoder = new googleObj.maps.Geocoder;

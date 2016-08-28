@@ -1,7 +1,8 @@
 body {
-  background-color: #424242;
+  background-color: $wisp-dark-gray;
   margin: 0;
   font-family: $font-roboto;
+  overflow: hidden;
 }
 
 #UI {
@@ -12,13 +13,22 @@ body {
   left: 0;
   position: absolute;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  align-items: center;
   pointer-events: none;
 }
 
 .ui-shade {
-  background: rgba($wisp-dark-gray, 0.8);
+  background: $wisp-transparent-black;
   pointer-events: all !important; // LAZY FOOL
+}
+
+.voice-text {
+  margin-top: 35vh;
+  max-width: 65vw;
+  color: $white;
+  order: 2;
 }
 
 #map {

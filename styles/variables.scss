@@ -2,8 +2,10 @@
 $white: #fff;
 $wisp-gray: #7a7a7a;
 $wisp-dark-gray: #424242;
+$wisp-light-black: #252424;
 $wisp-blue: #00aeef;
 $wisp-red: #fb4359;
+$wisp-transparent-black: rgba(0, 0, 0, 0.8);
 
 /* Fonts */
 $font-fa: FontAwesome;
@@ -20,3 +22,9 @@ $font-semi-large: 20px;
 $font-large: 22px;
 $font-x-large: 24px;
 $font-xx-large: 26px;
+
+/* Icons */
+$icon-send: '\f064';
+$icon-microphone: '\f130';
+$icon-close: '\f00d';
+$icon-replay: '\f021';

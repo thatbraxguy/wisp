@@ -1,10 +1,13 @@
+$button-size: 80px;
+
 #record_button {
-  @include circle(60px, $wisp-dark-gray);
+  border: 1px solid $white;
+  @include circle($button-size, $wisp-dark-gray);
+  @include transition( transform 0.4s, border 0.3s );
   color: $white;
   font-size: $font-semi-large;
   border: 1px solid $white;
-  align-self: flex-end;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
   pointer-events: all;
   outline: none;
   text-align: center;
@@ -12,20 +15,181 @@
   &.initial {
   	&:before {
   		font-family: $font-fa;
-  		content: '\f130';
+  		content: $icon-microphone;
   		display: block;
   	}
-  	&:active{
-  		background: $wisp-blue;
-  	}
+  }
+
+  &:active{
+    @include transform( scale(1.25, 1.25) );
+    background: $wisp-blue;
+    border: 1px solid $wisp-blue;
   }
 }
 
-.ui-center-button {
-  height: 50px;
-  width: 100px;
-  align-self: flex-end;
+#close_button {
+  order: 1;
+  &:before {
+    font-family: $font-fa;
+    content: $icon-close;
+    display: block;
+  }
+  &:active {
+    background: $white;
+    color: $wisp-light-black;
+  }
+  border-color: $wisp-dark-gray;
+}
+
+#preview_buttons {
+  @include circle(150px, $wisp-light-black);
+  font-size: $font-semi-large;
   margin-bottom: 10%;
-  padding: 1em;
+  text-align: center;
   pointer-events: all;
+  outline: none;
+  text-align: center;
+
+  button {
+    outline: none;
+  }
+}
+
+#replay_record {
+  @include circle(60px, $wisp-transparent-black);
+  margin: 45px 6px;
+  pointer-events: all;
+  color: $white;
+  font-size: $font-x-large;
+  border-color: $wisp-transparent-black;
+  &:before {
+    font-family: $font-fa;
+    content: $icon-replay;
+    display: block;
+  }
+  &:active {
+    background: $white;
+    color: $wisp-light-black;
+  }
+}
+
+#cancel_record {
+  pointer-events: all;
+  color: $wisp-red;
+  font-size: inherit;
+  &:before {
+    font-family: $font-fa;
+    content: $icon-close;
+    display: block;
+  }
+
+  outline: none;
+  border: none;
+  background: none;
+}
+
+#upload_record {
+  pointer-events: all;
+  color: $wisp-blue;
+  font-size: inherit;
+  &:before {
+    font-family: $font-fa;
+    content: $icon-send;
+    display: block;
+  }
+
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.ui-center-button {
+  @include circle($button-size, $wisp-dark-gray);
+  color: $white;
+  font-size: $font-semi-large;
+  margin-bottom: 15%;
+  text-align: center;
+  pointer-events: all;
+
+  outline: none;
+  text-align: center;
+
+  &:active{
+    background: $wisp-blue;
+  }
+}
+
+
+.recording {
+  @include transition( visibility 0.3s, opacity 0.2s );
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: $wisp-transparent-black;
+  opacity: 0;
+
+  &__instruction {
+    font-size: $font-small;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  &.active{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__wrapper {
+    @include transform(translate(-50%, -70%));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+  }
+
+  .spinner {
+    width: 150px;
+    height: 150px;
+
+    position: relative;
+    margin: 50px auto;
+  }
+
+  .double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $wisp-blue;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+  }
+
+  .double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+
+  @-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(3.0) }
+  }
+
+  @keyframes sk-bounce {
+    0%, 100% { 
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    } 50% { 
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
 }
