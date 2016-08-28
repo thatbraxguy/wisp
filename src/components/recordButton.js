@@ -1,20 +1,9 @@
 import { h } from 'maquette';
 import speech from '../speech';
-import * as location from '../location';
-import wispStore from '../wispStore';
+import { VIEW_STATES, updateState } from '../wedux';
 
-const onmousedown = () => {
-  speech.record(data => {
-    location.getUserLocation()
-    .then(({ latitude, longitude }) => {
-      wispStore.push({
-        lat: latitude,
-        lng: longitude,
-        message: data,
-      });
-    });
-  });
-};
+const onmousedown = () =>
+  speech.record(listenText => updateState({ view: VIEW_STATES.PREVIEW, listenText }));
 
 const onmouseup = () => {
   speech.stopRecording();

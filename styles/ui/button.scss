@@ -21,6 +21,61 @@
   border-color: $wisp-dark-gray;
 }
 
+#preview_buttons {
+  @include circle(150px, $wisp-dark-gray);
+  font-size: $font-semi-large;
+  margin-bottom: 2%;
+  text-align: center;
+  pointer-events: all;
+
+  outline: none;
+  text-align: center;
+}
+
+#replay_record {
+  @include circle(60px, $wisp-transparent-black);
+  margin: 45px 6px;
+  pointer-events: all;
+  color: $white;
+  font-size: $font-x-large;
+  border-color: $wisp-transparent-black;
+  &:before {
+    font-family: $font-fa;
+    content: '\f021';
+    display: block;
+  }
+}
+
+#cancel_record {
+  pointer-events: all;
+  color: $wisp-red;
+  font-size: inherit;
+  &:before {
+    font-family: $font-fa;
+    content: '\f00d';
+    display: block;
+  }
+
+  outline: none;
+  border: none;
+  background: none;
+}
+
+#upload_record {
+  pointer-events: all;
+  color: $wisp-blue;
+  font-size: inherit;
+  &:before {
+    font-family: $font-fa;
+    content: '\f04b';
+    display: block;
+  }
+
+  outline: none;
+  border: none;
+  background: none;
+}
+
 .ui-center-button {
   @include circle(60px, $wisp-dark-gray);
   color: $white;
