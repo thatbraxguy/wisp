@@ -28,7 +28,7 @@ const slides = [
   h('div#slide1.slide', [
     h('div.slide__wrapper', [
       h('h1.logo', 'WISP'),
-      h('p', 'Leaving memories for you to rediscover again.')
+      h('p', 'Leaving memories for you to discover again.')
     ])
   ]),
   h('div#slide2.slide', [
