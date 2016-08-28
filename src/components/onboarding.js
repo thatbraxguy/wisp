@@ -1,5 +1,6 @@
 import { h } from 'maquette';
 import { VIEW_STATES, updateState } from '../wedux';
+import viewingWispsAsset from '../assets/onboard-wisp.png';
 
 let currSlide = 0;
 let forward = true;
@@ -24,14 +25,22 @@ const skip = () => {
 };
 
 const slides = [
-  'slide 1',
-  'slide 2',
-  'slide 3',
+  h('div#slide1', [
+    h('h1', 'WISP')
+  ]),
+  h('div#slide2', [
+    h('button#record_button.initial.ui-center-button')
+  ]),
+  h('div#slide3', [
+    h('h3', 'Viewing Wisps'),
+    h('img', { src: viewingWispsAsset })
+  ]),
 ];
 
 const getSlides = () =>
   slides.map((slide, i) => {
-    let classnames = 'img.carousel--item';
+    let classnames = 'div.carousel--item';
+    classnames += `#slide${i}`
 
     if (i === currSlide) {
       classnames += '.active';
@@ -42,12 +51,12 @@ const getSlides = () =>
   });
 
 const render = () => {
-  return [
+  return h('div.onboarding', [
     h('button#continueBtn.pointerEvents', { onclick: skip }),
     h('button#nextBtn.pointerEvents', { onclick: nextSlide }),
     h('button#prevBtn.pointerEvents', { onclick: lastSlide }),
     h('div.carousel.pointerEvents', [getSlides()]),
-  ];
+  ]);
 }
 
 export default render;
