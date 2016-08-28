@@ -10,8 +10,8 @@ const onmouseup = () => {
 const render = ({ listenText, listenProgress }) => {
   speech.speak(listenText);
   return [
-    h('p', [listenText]),
-    h('button#close_button.ui-center-button', { onmouseup }, ['X']),
+    h('p.voice-text', [listenText]),
+    h('button#close_button.ui-center-button', { onmouseup }),
   ];
 }
 
