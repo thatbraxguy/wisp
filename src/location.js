@@ -5,11 +5,13 @@ import { forEach } from 'ramda';
 import config from './config';
 import { VIEW_STATES, updateState } from './wedux';
 import wispAsset from './assets/wisp.png';
+import userAsset from './assets/user-marker.png';
 
 let googleObj;
 let map;
 let geocoder;
 let mapIcon;
+let userIcon;
 let player;
 let placeService;
 
@@ -33,6 +35,7 @@ const makePlayerMarker = (position) => {
     position,
     map,
     draggable: true,
+    icon: userIcon,
   })
 
   player.addListener('dragend', () => getPlayerLocation().then(findCurrentPlace));
@@ -89,6 +92,14 @@ export const init = config =>
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 0),
         scaledSize: new google.maps.Size(25, 25)
+      };
+
+      userIcon = {
+        url: userAsset,
+        size: new google.maps.Size(66, 92),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(12.5, 33),
+        scaledSize: new google.maps.Size(25, 32)
       };
 
       map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
