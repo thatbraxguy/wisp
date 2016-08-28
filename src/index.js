@@ -10,7 +10,7 @@ require('../styles/main.scss');
 location.init(config.gmaps)
 .then(location.setMapLocation)
 .then(() => {
-  wedux.updateState({ view: wedux.VIEW_STATES.DEFAULT });
+  wedux.updateState({ view: wedux.VIEW_STATES.ONBOARDING });
   wisps.addListener('child_added', location.createWispMarker);
   wisps.init();
 });

@@ -1,4 +1,4 @@
-$button-size: 80px;
+$button-size: 100px;
 
 #record_button {
   border: 1px solid $white;
@@ -38,7 +38,7 @@ $button-size: 80px;
     background: $white;
     color: $wisp-light-black;
   }
-  border-color: $wisp-dark-gray;
+  border-color: none;
 }
 
 #preview_buttons {
@@ -49,8 +49,11 @@ $button-size: 80px;
   pointer-events: all;
   outline: none;
   text-align: center;
+  -webkit-animation: popin 0.3s ease-in-out;
+  animation: popin 0.3s ease-in-out;
 
   button {
+    @include transition( all 0.3s );
     outline: none;
   }
 }
@@ -63,6 +66,7 @@ $button-size: 80px;
   font-size: $font-x-large;
   border-color: $wisp-transparent-black;
   &:before {
+    @include transition(transform 0.3s);
     font-family: $font-fa;
     content: $icon-replay;
     display: block;
@@ -70,6 +74,10 @@ $button-size: 80px;
   &:active {
     background: $white;
     color: $wisp-light-black;
+
+    &:before {
+      @include transform(rotate(360deg));
+    }
   }
 }
 
@@ -81,6 +89,12 @@ $button-size: 80px;
     font-family: $font-fa;
     content: $icon-close;
     display: block;
+  }
+  &:active {
+    transform: scale(2,2);
+    background: $wisp-red;
+    color: $white;
+    border-radius: 5px;
   }
 
   outline: none;
@@ -96,6 +110,12 @@ $button-size: 80px;
     font-family: $font-fa;
     content: $icon-send;
     display: block;
+  }
+  &:active {
+    transform: scale(2,2);
+    background: $wisp-blue;
+    color: $white;
+    border-radius: 5px;
   }
 
   outline: none;
@@ -188,6 +208,16 @@ $button-size: 80px;
       transform: scale(0.0);
       -webkit-transform: scale(0.0);
     } 50% { 
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
+
+  @keyframes popin {
+    0% { 
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    } 100% { 
       transform: scale(1.0);
       -webkit-transform: scale(1.0);
     }
