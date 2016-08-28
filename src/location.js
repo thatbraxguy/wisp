@@ -7,15 +7,18 @@ import config from './config';
 let map;
 let googleObj;
 
-export const setMapLocation = ({ maps }) => {
-  if (navigator.geolocation) {
-    navigator
-      .geolocation
-      .getCurrentPosition(
-        ({ coords }) => map.setCenter(new maps.LatLng(coords.latitude, coords.longitude))
-      );
-  }
-};
+export const getUserLocation = () =>
+  new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation
+        .getCurrentPosition(({ coords }) => resolve(coords));
+    }
+  });
+
+export const setMapLocation = ({ maps }) =>
+  getUserLocation().then(({ latitude, longitude }) =>
+    map.setCenter(new maps.LatLng(latitude, longitude))
+  );
 
 export const createWispMarkers = forEach(
   ({ lat, lng, message }) =>
