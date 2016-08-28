@@ -7,11 +7,8 @@ import { VIEW_STATES, updateState } from './wedux';
 
 let googleObj;
 let map;
-<<<<<<< HEAD
 let geocoder;
-=======
-let geocoder
->>>>>>> a1bb9142b095281a32a3c88ea7618a2b6ad69265
+
 const minZoom = 18;
 
 export const getUserLocation = () =>
