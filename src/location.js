@@ -48,7 +48,7 @@ export const init = config =>
       console.log(google);
 
       map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
-      geocoder = new googleObj.maps.Geocoder
+      geocoder = new googleObj.maps.Geocoder;
 
       googleObj.maps.event.addListener(map, 'zoom_changed', () => {
         if(map.getZoom() < minZoom) map.setZoom(minZoom);
