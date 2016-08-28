@@ -7,7 +7,12 @@ import { VIEW_STATES, updateState } from './wedux';
 
 let googleObj;
 let map;
+<<<<<<< HEAD
 let geocoder;
+=======
+let geocoder
+>>>>>>> a1bb9142b095281a32a3c88ea7618a2b6ad69265
+const minZoom = 18;
 
 export const getUserLocation = () =>
   new Promise((resolve, reject) => {
@@ -45,8 +50,14 @@ export const init = config =>
     GoogleMapLoader.load(google => {
       googleObj = google;
       console.log(google);
+
       map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
       geocoder = new googleObj.maps.Geocoder;
+
+      googleObj.maps.event.addListener(map, 'zoom_changed', () => {
+        if(map.getZoom() < minZoom) map.setZoom(minZoom);
+      });
+
       resolve(googleObj);
     });
   });
