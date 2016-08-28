@@ -7,5 +7,6 @@ export default{
     draggable: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
+    clickableIcons: false,
   }
 };
