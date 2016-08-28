@@ -1,0 +1,30 @@
+#top_bar{
+  order: 3;
+  width: 100%;
+  height: 10%;
+}
+#side_menu{
+  // font-family: $fa-bars;
+  content: '\f0c9';
+}
+#current_location {
+  color: $white;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  background: rgba(0,0,0, 0.6);
+
+  #current {
+    color: $wisp-gray;
+    font-size: $font-small;
+    margin-bottom: -7px;
+  }
+
+  #address {
+    font-size: $font-medium-large;
+  }
+}
+#compass{
+  // font-family: $fa-compass;
+  content: '\f14e';
+}

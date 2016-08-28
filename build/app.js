@@ -976,13 +976,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	console.log();
-
 	var googleObj = void 0;
 	var map = void 0;
 	var geocoder = void 0;
 	var mapIcon = void 0;
 	var player = void 0;
+	var placeService = void 0;
 
 	var minZoom = 18;
 
@@ -1012,7 +1011,7 @@
 	  });
 
 	  player.addListener('dragend', function () {
-	    return console.log(getPlayerLocation());
+	    return getPlayerLocation().then(findCurrentPlace);
 	  });
 	};
 
@@ -1025,26 +1024,42 @@
 	    var center = new maps.LatLng(latitude, longitude);
 	    map.setCenter(center);
 	    makePlayerMarker(center);
+
+	    console.log(center);
+	    findCurrentPlace({ lat: center.lat(), lng: center.lng() });
 	  });
 	};
 
-	var createWispMarker = exports.createWispMarker = function createWispMarker(_ref4) {
+	var findCurrentPlace = function findCurrentPlace(_ref4) {
 	  var lat = _ref4.lat;
 	  var lng = _ref4.lng;
-	  var message = _ref4.message;
+
+	  geocoder.geocode({ location: { lat: lat, lng: lng } }, function (res, status) {
+	    if (status === 'OK') {
+	      var temp = { placeId: res[0]['place_id'] };
+	      placeService.getDetails(temp, handlePlaceResponse);
+	    }
+	  });
+	};
+
+	var handlePlaceResponse = function handlePlaceResponse(res, status) {
+	  if (status === 'OK') {
+	    (0, _wedux.updateState)({ currentLocation: res.name });
+	  } else {
+	    console.log(status);
+	  }
+	};
+
+	var createWispMarker = exports.createWispMarker = function createWispMarker(_ref5) {
+	  var lat = _ref5.lat;
+	  var lng = _ref5.lng;
+	  var message = _ref5.message;
 	  return new googleObj.maps.Marker({
 	    position: { lat: lat, lng: lng },
 	    map: map,
 	    icon: mapIcon
 	  }).addListener('click', function () {
-	    (0, _wedux.updateState)({ listenText: message, view: _wedux.VIEW_STATES.LISTENING });
-	    geocoder.geocode({ 'location': { lat: lat, lng: lng } }, function (res, status) {
-	      if (status === 'OK') {
-	        console.log(res[0]);
-	      } else {
-	        console.log(status);
-	      }
-	    });
+	    return (0, _wedux.updateState)({ listenText: message, view: _wedux.VIEW_STATES.LISTENING });
 	  });
 	};
 
@@ -1052,6 +1067,7 @@
 	  return new _bluebird2.default(function (resolve) {
 	    // init google maps
 	    _googleMaps2.default.KEY = config.apiKey;
+	    _googleMaps2.default.LIBRARIES = ['places'];
 	    _googleMaps2.default.load(function (google) {
 	      googleObj = google;
 	      mapIcon = {
@@ -1064,6 +1080,7 @@
 
 	      map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
 	      geocoder = new googleObj.maps.Geocoder();
+	      placeService = new googleObj.maps.places.PlacesService(map);
 
 	      googleObj.maps.event.addListener(map, 'zoom_changed', function () {
 	        if (map.getZoom() < minZoom) map.setZoom(minZoom);
@@ -16002,6 +16019,10 @@
 
 	var _ramda = __webpack_require__(13);
 
+	var _topBar = __webpack_require__(32);
+
+	var _topBar2 = _interopRequireDefault(_topBar);
+
 	var _recordButton = __webpack_require__(19);
 
 	var _recordButton2 = _interopRequireDefault(_recordButton);
@@ -16031,16 +16052,16 @@
 	// View resolver right?
 	var viewFunctions = {
 	  DEFAULT: function DEFAULT() {
-	    return [(0, _recordButton2.default)(wedux.state)];
+	    return [(0, _topBar2.default)(wedux.state), (0, _recordButton2.default)(wedux.state)];
 	  },
 	  LISTENING: function LISTENING() {
-	    return (0, _listening2.default)(wedux.state);
+	    return [(0, _topBar2.default)(wedux.state), (0, _listening2.default)(wedux.state)];
 	  },
 	  LOADING: function LOADING() {
 	    return (0, _loading2.default)();
 	  },
 	  PREVIEW: function PREVIEW() {
-	    return (0, _preview2.default)(wedux.state);
+	    return [(0, _topBar2.default)(wedux.state), (0, _preview2.default)(wedux.state)];
 	  }
 	};
 
@@ -21194,6 +21215,46 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _maquette = __webpack_require__(17);
+
+	var _location = __webpack_require__(8);
+
+	var location = _interopRequireWildcard(_location);
+
+	var _wispStore = __webpack_require__(7);
+
+	var _wispStore2 = _interopRequireDefault(_wispStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var clickeduseless = function clickeduseless() {
+	  console.log("incomplete functions");
+	};
+
+	var render = function render(state) {
+	  return (0, _maquette.h)('div#top_bar', [(0, _maquette.h)('div#current_location', [(0, _maquette.h)('p#current', 'CURRENT LOCATION'), (0, _maquette.h)('p#address', state.currentLocation)])]);
+	};
+
+	exports.default = render;
 
 /***/ }
 /******/ ]);

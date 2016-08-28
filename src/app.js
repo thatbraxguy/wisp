@@ -2,6 +2,7 @@ import { h, createProjector } from 'maquette';
 import cssTransitions from 'css-transition';
 import { contains } from 'ramda';
 
+import topBar from './components/topBar';
 import recordButton from './components/recordButton';
 import listening from './components/listening';
 import loading from './components/loading';
@@ -11,10 +12,10 @@ const projector = createProjector();
 
 // View resolver right?
 const viewFunctions = {
-  DEFAULT:  () => [recordButton(wedux.state)],
-  LISTENING: () => listening(wedux.state),
+  DEFAULT:  () => [topBar(wedux.state), recordButton(wedux.state)],
+  LISTENING: () => [topBar(wedux.state), listening(wedux.state)],
   LOADING: () => loading(),
-  PREVIEW: () => preview(wedux.state),
+  PREVIEW: () => [topBar(wedux.state), preview(wedux.state)],
 };
 
 // #classnames is a good library

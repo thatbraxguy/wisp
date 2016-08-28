@@ -25,9 +25,10 @@ body {
 }
 
 .voice-text {
-  margin-top: 35vh;
+  margin-top: 0;
   max-width: 65vw;
   color: $white;
+  font-size: $font-semi-large;
   order: 2;
 }
 
