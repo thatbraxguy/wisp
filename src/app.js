@@ -13,9 +13,9 @@ const projector = createProjector();
 // View resolver right?
 const viewFunctions = {
   DEFAULT:  () => [topBar(wedux.state), recordButton(wedux.state)],
-  LISTENING: () => listening(wedux.state),
+  LISTENING: () => [topBar(wedux.state), listening(wedux.state)],
   LOADING: () => loading(),
-  PREVIEW: () => preview(wedux.state),
+  PREVIEW: () => [topBar(wedux.state), preview(wedux.state)],
 };
 
 // #classnames is a good library
