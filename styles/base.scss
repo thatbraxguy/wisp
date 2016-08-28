@@ -28,13 +28,8 @@ body {
   margin-top: 0;
   max-width: 65vw;
   color: $white;
-  order: 3;
-  font-size: $font-semi-large;
-}
-.wisp-date {
-  font-size: 10px;
-  color: $white;
   order: 2;
+  font-size: $font-semi-large;
 }
 
 #map {

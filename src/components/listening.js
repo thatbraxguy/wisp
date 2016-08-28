@@ -11,8 +11,7 @@ const render = ({ listenText, datetime, listenProgress }) => {
   speech.speak(listenText);
   console.log('datetime', datetime);
   return [
-    h('p.voice-text', [listenText]),
-    h('p.wisp-date', datetime),
+    h('p.voice-text', [listenText, datetime]),
     h('button#close_button.ui-center-button', { onmouseup }),
   ];
 }
