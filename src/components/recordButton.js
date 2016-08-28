@@ -4,9 +4,7 @@ import * as location from '../location';
 import wispStore from '../wispStore';
 
 const onmousedown = () => {
-  console.log("recording start");
   speech.record(data => {
-    console.log(data);
     location.getUserLocation()
     .then(({ latitude, longitude }) => {
       wispStore.push({
@@ -19,11 +17,10 @@ const onmousedown = () => {
 };
 
 const onmouseup = () => {
-  console.log("recording stop");
   speech.stopRecording();
 };
 
 const render = state =>
-  h('button#MainBut', { onmousedown, onmouseup });
+  h('button#record_button.ui-center-button', { onmousedown, onmouseup });
 
 export default render;
