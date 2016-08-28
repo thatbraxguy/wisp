@@ -10,7 +10,7 @@ export const VIEW_STATES = {
 };
 
 const getInitialSate = () => ({
-  view: VIEW_STATES.LISTENING,
+  view: VIEW_STATES.DEFAULT,
 });
 export let state = getInitialSate();
 

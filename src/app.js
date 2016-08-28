@@ -7,15 +7,15 @@ import * as wedux from './wedux';
 
 // View resolver right?
 const views = {
-  DEFAULT:  [recordButton()],
-  LISTENING: listening(wedux.state),
+  DEFAULT:  () => [recordButton()],
+  LISTENING: () => listening(wedux.state),
 }
 
 // :P
 const render = state =>
   h('div', [
     h('div#map'),
-    h('div#UI', views[state.view]),
+    h('div#UI', views[state.view]()),
   ]);
 
 document.addEventListener('DOMContentLoaded', () =>

@@ -3,7 +3,7 @@ import Promise from 'bluebird';
 import { forEach } from 'ramda';
 
 import config from './config';
-import speech from './speech';
+import { VIEW_STATES, updateState } from './wedux';
 
 let map;
 let googleObj;
@@ -26,7 +26,10 @@ export const createWispMarker = ({ lat, lng, message }) =>
         position: { lat, lng },
         map,
       })
-    .addListener('click', () => speech.speak(message));
+    .addListener('click', () => updateState({
+      listenText: message,
+      view: VIEW_STATES.LISTENING,
+    }));
 
 export const init = config =>
   new Promise(resolve => {
