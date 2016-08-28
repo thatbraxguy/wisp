@@ -1,7 +1,8 @@
 body {
-  background-color: #424242;
+  background-color: $wisp-dark-gray;
   margin: 0;
   font-family: $font-roboto;
+  overflow: hidden;
 }
 
 #UI {

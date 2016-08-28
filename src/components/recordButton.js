@@ -21,6 +21,12 @@ const onmouseup = () => {
 };
 
 const render = state =>
-  h('button#record_button.initial.ui-center-button', { onmousedown, onmouseup });
+  h('button#record_button.initial.ui-center-button',
+    {
+      onmousedown,
+      onmouseup,
+      ontouchstart: onmousedown,
+      ontouchend: onmouseup
+    });
 
 export default render;
