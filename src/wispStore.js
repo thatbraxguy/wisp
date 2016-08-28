@@ -1,7 +1,7 @@
 import db from './db';
 
 let listeners = {};
-const wisps = db.ref('wisp');
+let wisps = {};
 
 const callListeners = (event, data) => {
   if (listeners[event]) {
@@ -14,10 +14,14 @@ const addListener = (event, cb) => {
   listeners[event].push(cb);
 }
 
-wisps.on('child_added', snapshot =>
-  callListeners('child_added', snapshot.val()));
+const init = () => {
+  wisps = db.ref('wisp');
+  wisps.on('child_added', snapshot =>
+    callListeners('child_added', snapshot.val()));
+}
 
 export default {
+  init,
   addListener,
   push: data => wisps.push(data),
 };

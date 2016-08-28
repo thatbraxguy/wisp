@@ -20,11 +20,12 @@ export const setMapLocation = ({ maps }) =>
     map.setCenter(new maps.LatLng(latitude, longitude))
   );
 
-export const createWispMarkers = forEach(
-  ({ lat, lng, message }) =>
-    new googleObj.maps.Marker({ position: { lat, lng }, map })
-    .addListener('click', () => console.log(message))
-);
+export const createWispMarker = ({ lat, lng, message }) =>
+    new googleObj.maps.Marker({
+        position: { lat, lng },
+        map,
+      })
+    .addListener('click', () => console.log(message));
 
 export const init = config =>
   new Promise(resolve => {
