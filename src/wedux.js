@@ -10,8 +10,14 @@ export const VIEW_STATES = {
   LOADING: 'LOADING',
 };
 
+export const BUTTON_STATES = {
+  INACTIVE: 'INACTIVE',
+  ACTIVE: 'ACTIVE'
+}
+
 const getInitialSate = () => ({
   view: VIEW_STATES.LOADING,
+  button: BUTTON_STATES.INACTIVE
 });
 export let state = getInitialSate();
 
