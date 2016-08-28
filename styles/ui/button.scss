@@ -21,6 +21,18 @@
   border-color: $wisp-dark-gray;
 }
 
+#upload_record {
+  pointer-events: all;
+}
+
+#cancel_record {
+  pointer-events: all;
+}
+
+#play_preview {
+  pointer-events: all;
+}
+
 .ui-center-button {
   @include circle(60px, $wisp-dark-gray);
   color: $white;

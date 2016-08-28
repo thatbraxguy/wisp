@@ -5,6 +5,7 @@ import { contains } from 'ramda';
 import recordButton from './components/recordButton';
 import listening from './components/listening';
 import loading from './components/loading';
+import preview from './components/preview';
 import * as wedux from './wedux';
 const projector = createProjector();
 
@@ -13,6 +14,7 @@ const viewFunctions = {
   DEFAULT:  () => [recordButton()],
   LISTENING: () => listening(wedux.state),
   LOADING: () => loading(),
+  PREVIEW: () => preview(wedux.state),
 };
 
 // #classnames is a good library
