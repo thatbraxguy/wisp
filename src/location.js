@@ -66,14 +66,14 @@ const handlePlaceResponse = (res, status) => {
   }
 }
 
-export const createWispMarker = ({ lat, lng, message }) =>
+export const createWispMarker = ({ lat, lng, message, datetime }) =>
     new googleObj.maps.Marker({
         position: { lat, lng },
         map,
         icon: mapIcon,
       })
     .addListener('click', () =>
-      updateState({ listenText: message, view: VIEW_STATES.LISTENING,})
+      updateState({ listenText: message, datetime, view: VIEW_STATES.LISTENING,})
     );
 
 export const init = config =>

@@ -28,6 +28,11 @@ body {
   margin-top: 35vh;
   max-width: 65vw;
   color: $white;
+  order: 3;
+}
+.wisp-date {
+  font-size: 10px;
+  color: $white;
   order: 2;
 }
 
