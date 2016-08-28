@@ -1,4 +1,5 @@
 import { h, createProjector } from 'maquette';
+import cssTransitions from 'css-transition';
 const projector = createProjector();
 
 import recordButton from './components/recordButton';
@@ -21,6 +22,6 @@ const render = state =>
   ]);
 
 document.addEventListener('DOMContentLoaded', () =>
-  projector.append(document.querySelector('#app'), () => render(wedux.state)));
+  projector.append(document.querySelector('#app'), () => render(wedux.state), {transitions: cssTransitions}));
 
 wedux.connect(() => projector.scheduleRender());
