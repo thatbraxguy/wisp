@@ -7,10 +7,11 @@ export const VIEW_STATES = {
   MENU: 'MENU',
   SETTINGS: 'SETTINGS',
   DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
 };
 
 const getInitialSate = () => ({
-  view: VIEW_STATES.DEFAULT,
+  view: VIEW_STATES.LOADING,
 });
 export let state = getInitialSate();
 

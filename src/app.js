@@ -3,13 +3,15 @@ const projector = createProjector();
 
 import recordButton from './components/recordButton';
 import listening from './components/listening';
+import loading from './components/loading';
 import * as wedux from './wedux';
 
 // View resolver right?
 const views = {
   DEFAULT:  () => [recordButton()],
   LISTENING: () => listening(wedux.state),
-}
+  LOADING: () => loading(),
+};
 
 // :P
 const render = state =>
