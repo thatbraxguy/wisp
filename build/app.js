@@ -21321,6 +21321,12 @@
 
 	var _wedux = __webpack_require__(14);
 
+	var _onboardWisp = __webpack_require__(36);
+
+	var _onboardWisp2 = _interopRequireDefault(_onboardWisp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var currSlide = 0;
 	var forward = true;
 	var numSlides = 3;
@@ -21343,11 +21349,12 @@
 	  (0, _wedux.updateState)({ view: _wedux.VIEW_STATES.DEFAULT });
 	};
 
-	var slides = ['slide 1', 'slide 2', 'slide 3'];
+	var slides = [(0, _maquette.h)('div#slide1.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h1.logo', 'WISP'), (0, _maquette.h)('p', 'Leaving memories for you to rediscover again.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Leaving Wisps'), (0, _maquette.h)('button#record_button.initial.ui-center-button'), (0, _maquette.h)('p', 'While presing on the record button, speak and leave your message.')])]), (0, _maquette.h)('div#slide2.slide', [(0, _maquette.h)('div.slide__wrapper', [(0, _maquette.h)('h3', 'Viewing Wisps'), (0, _maquette.h)('img', { src: _onboardWisp2.default }), (0, _maquette.h)('p', 'Listen to other wisps people have left by pressing on them.')])])];
 
 	var getSlides = function getSlides() {
 	  return slides.map(function (slide, i) {
-	    var classnames = 'img.carousel--item';
+	    var classnames = 'div.carousel--item';
+	    classnames += '#slide' + i;
 
 	    if (i === currSlide) {
 	      classnames += '.active';
@@ -21359,10 +21366,16 @@
 	};
 
 	var render = function render() {
-	  return [(0, _maquette.h)('button#continueBtn.pointerEvents', { onclick: skip }), (0, _maquette.h)('button#nextBtn.pointerEvents', { onclick: nextSlide }), (0, _maquette.h)('button#prevBtn.pointerEvents', { onclick: lastSlide }), (0, _maquette.h)('div.carousel.pointerEvents', [getSlides()])];
+	  return (0, _maquette.h)('div.onboarding', [(0, _maquette.h)('button#continueBtn.pointerEvents.carousel-btn', { onclick: skip }, ["Continue"]), (0, _maquette.h)('section.bottom-actions', [(0, _maquette.h)('button#prevBtn.pointerEvents.carousel-btn', { onclick: lastSlide }), (0, _maquette.h)('button#nextBtn.pointerEvents.carousel-btn', { onclick: nextSlide })]), (0, _maquette.h)('div.carousel.pointerEvents', [getSlides()])]);
 	};
 
 	exports.default = render;
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "onboard-wisp-f32dbd1d26c309e95b9dd6e10c31e361.png";
 
 /***/ }
 /******/ ]);
