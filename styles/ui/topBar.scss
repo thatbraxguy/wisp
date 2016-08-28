@@ -1,0 +1,16 @@
+#top_bar{
+  order: 2;
+  width: 100%;
+  height: 10%;
+}
+#side_menu{
+  // font-family: $fa-bars;
+  content: '\f0c9';
+}
+#current_location{
+  color: white;
+}
+#compass{
+  // font-family: $fa-compass;
+  content: '\f14e';
+}
