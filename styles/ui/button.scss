@@ -1,11 +1,12 @@
+$button-size: 80px;
+
 #record_button {
   border: 1px solid $white;
-  @include circle(80px, $wisp-dark-gray);
+  @include circle($button-size, $wisp-dark-gray);
   @include transition( transform 0.4s, border 0.3s );
   color: $white;
   font-size: $font-semi-large;
   border: 1px solid $white;
-  align-self: flex-end;
   margin-bottom: 15%;
   pointer-events: all;
   outline: none;
@@ -14,7 +15,7 @@
   &.initial {
   	&:before {
   		font-family: $font-fa;
-  		content: '\f130';
+  		content: $icon-microphone;
   		display: block;
   	}
   }
@@ -30,22 +31,28 @@
   order: 1;
   &:before {
     font-family: $font-fa;
-    content: '\f00d';
+    content: $icon-close;
     display: block;
   }
-
+  &:active {
+    background: $white;
+    color: $wisp-light-black;
+  }
   border-color: $wisp-dark-gray;
 }
 
 #preview_buttons {
-  @include circle(150px, $wisp-dark-gray);
+  @include circle(150px, $wisp-light-black);
   font-size: $font-semi-large;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
   text-align: center;
   pointer-events: all;
-
   outline: none;
   text-align: center;
+
+  button {
+    outline: none;
+  }
 }
 
 #replay_record {
@@ -57,8 +64,12 @@
   border-color: $wisp-transparent-black;
   &:before {
     font-family: $font-fa;
-    content: '\f021';
+    content: $icon-replay;
     display: block;
+  }
+  &:active {
+    background: $white;
+    color: $wisp-light-black;
   }
 }
 
@@ -68,7 +79,7 @@
   font-size: inherit;
   &:before {
     font-family: $font-fa;
-    content: '\f00d';
+    content: $icon-close;
     display: block;
   }
 
@@ -83,7 +94,7 @@
   font-size: inherit;
   &:before {
     font-family: $font-fa;
-    content: '\f04b';
+    content: $icon-send;
     display: block;
   }
 
@@ -93,10 +104,10 @@
 }
 
 .ui-center-button {
-  @include circle(60px, $wisp-dark-gray);
+  @include circle($button-size, $wisp-dark-gray);
   color: $white;
   font-size: $font-semi-large;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
   text-align: center;
   pointer-events: all;
 
