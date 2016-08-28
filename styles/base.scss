@@ -25,10 +25,11 @@ body {
 }
 
 .voice-text {
-  margin-top: 35vh;
+  margin-top: 0;
   max-width: 65vw;
   color: $white;
   order: 3;
+  font-size: $font-semi-large;
 }
 .wisp-date {
   font-size: 10px;
