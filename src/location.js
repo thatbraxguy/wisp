@@ -5,8 +5,9 @@ import { forEach } from 'ramda';
 import config from './config';
 import speech from './speech';
 
-let map;
 let googleObj;
+let map;
+let geocoder;
 
 export const getUserLocation = () =>
   new Promise((resolve, reject) => {
@@ -26,7 +27,16 @@ export const createWispMarker = ({ lat, lng, message }) =>
         position: { lat, lng },
         map,
       })
-    .addListener('click', () => speech.speak(message));
+    .addListener('click', () => {
+      speech.speak(message);
+      geocoder.geocode({'location':{lat, lng}}, (res, status) => {
+        if(status === 'OK'){
+          console.log(res[0]);
+        }else{
+          console.log(status);
+        }
+      });
+    });
 
 export const init = config =>
   new Promise(resolve => {
@@ -34,7 +44,9 @@ export const init = config =>
     GoogleMapLoader.KEY = config.apiKey;
     GoogleMapLoader.load(google => {
       googleObj = google;
+      console.log(google);
       map = new googleObj.maps.Map(document.querySelector('#map'), config.options);
+      geocoder = new googleObj.maps.Geocoder;
       resolve(googleObj);
     });
   });
