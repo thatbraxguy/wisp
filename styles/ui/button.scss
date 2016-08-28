@@ -1,0 +1,22 @@
+#mainButton {
+  @include circle(60px, $wisp-dark-gray);
+  color: #fff;
+  font-size: $font-semi-large;
+  border: 1px solid #fff;
+  align-self: flex-end;
+  margin-bottom: 10%;
+  pointer-events: all;
+  outline: none;
+  text-align: center;
+
+  &.initial {
+  	&:before {
+  		font-family: $font-fa;
+  		content: '\f130';
+  		display: block;
+  	}
+  	&:active{
+  		background: $wisp-blue;
+  	}
+  }
+}

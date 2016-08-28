@@ -1,34 +1,6 @@
-body {
-  background-color: #424242;
-  margin: 0;
-}
+@import "./fonts.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
+@import "./base.scss";
 
-#UI {
-  height: 100%;
-  width: 100%;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-
-#MainBut {
-  background: #424242;
-  color: #fff;
-  font-size: 14px;
-  border: 2px solid #fff;
-  align-self: flex-end;
-  margin-bottom: 10%;
-  padding: 1em;
-  pointer-events: all;
-}
-
-#map {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  z-index: 10
-}
+@import "./ui/button.scss";

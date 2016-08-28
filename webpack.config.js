@@ -22,7 +22,15 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractText.extract('style-loader', 'css-loader!sass-loader')
-      }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2($|\?))$/,
+        loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+      },
+      {
+        test: /\.(otf|ttf|eot?)(\?[a-z0-9=&.]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+      },
     ],
   },
 
